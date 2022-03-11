@@ -1,6 +1,7 @@
 package ru.gb.lessons.lesson5;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.lang.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +26,7 @@ public class AddProductToCartTest {
         webDriver.findElement(By.xpath("//*[@id=\"ajax-wrapper\"]/div/main/section/div[2]/div[1]/article/div/a/h3")).click();
         webDriver.findElement(By.xpath("//*[@id=\"pdp\"]/section[1]/aside/div/div/div[2]/form/div[2]/div/button")).click();
         webDriver.findElement(By.xpath("//*[@id=\"popup_add-to-cart\"]/div[1]/div/div/div/div[3]/a[2]")).click();
+        assert "Товар добавлен в корзину".equals(StringUtils.capitalize("Товар добавлен в корзин")) : "Тест успешен";
         webDriver.quit();
 
         assertThat(addProductToCart).isIn(productName);
